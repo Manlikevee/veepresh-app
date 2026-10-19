@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Veepresh",
+    "slug": "veepresh",
+    "version": "1.0.0",
+    "scheme": "veepresh",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#F2F0EB",
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.veepresh.app"
+    },
+    "android": {
+      "package": "com.veepresh.app"
+    },
+    "plugins": [
+      "expo-router",
+      "expo-font"
+    ]
+  }
+}
