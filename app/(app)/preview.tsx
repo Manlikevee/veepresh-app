@@ -1,3 +1,4 @@
+import { Theme, useStyles, useTheme } from '../../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import * as FileSystem from 'expo-file-system/legacy';
 import * as IntentLauncher from 'expo-intent-launcher';
@@ -9,7 +10,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { BackRow, Button, Card } from '../../src/components/ui';
 import { formatBytes } from '../../src/lib/quiz';
-import { colors, fonts, radius } from '../../src/theme';
+import { fonts, radius } from '../../src/theme';
 
 /**
  * PDF preview.
@@ -17,6 +18,8 @@ import { colors, fonts, radius } from '../../src/theme';
  *  - Android: WebView can't render PDFs, so the file is handed to the phone's PDF viewer.
  */
 export default function Preview() {
+  const { colors, isDark } = useTheme();
+  const s = useStyles(makeStyles);
   const { uri, name, size } = useLocalSearchParams<{ uri: string; name: string; size: string }>();
   const [loading, setLoading] = useState(true);
 
@@ -35,7 +38,7 @@ export default function Preview() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
+      <StatusBar style={isDark ? 'light' : 'dark'} />
       <View style={{ padding: 16, paddingBottom: 0 }}>
         <BackRow onBack={() => router.back()} />
       </View>
@@ -62,7 +65,7 @@ export default function Preview() {
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   frame: { flex: 1, margin: 16, marginTop: 4, borderRadius: radius.md, borderWidth: 1, borderColor: colors.border, overflow: 'hidden', backgroundColor: colors.surface },
   icon: { width: 64, height: 64, borderRadius: radius.md, backgroundColor: colors.errorLight, alignItems: 'center', justifyContent: 'center' },
   name: { fontFamily: fonts.display700, fontSize: 17, letterSpacing: -0.3, color: colors.textPrimary, textAlign: 'center', marginTop: 16 },

@@ -4,29 +4,14 @@
     "slug": "veepresh",
     "version": "1.0.0",
     "scheme": "veepresh",
-    "platforms": [
-      "ios",
-      "android"
-    ],
+    "platforms": ["ios", "android"],
     "orientation": "portrait",
-    "userInterfaceStyle": "light",
-    "backgroundColor": "#F2F0EB",
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.veepresh.app"
-    },
-    "android": {
-      "package": "com.veepresh.app"
-    },
+    "userInterfaceStyle": "automatic",
+    "ios": { "supportsTablet": true, "bundleIdentifier": "com.veepresh.app" },
+    "android": { "package": "com.veepresh.app" },
     "plugins": [
       "expo-router",
-      "expo-font"
-    ],
-    "extra": {
-      "router": {},
-      "eas": {
-        "projectId": "08be5916-19a8-4e66-b26f-2f5011c46aa3"
-      }
-    }
+      ["expo-notifications", { "color": "#1D6BF3" }]
+    ]
   }
 }

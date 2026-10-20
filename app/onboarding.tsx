@@ -1,25 +1,31 @@
+import { Theme, useStyles, useTheme } from '../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import { router } from 'expo-router';
-import React, { useRef, useState } from 'react';
+import React, { useMemo, useRef, useState } from 'react';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 import { Brand, Button, FadeUp, IconName } from '../src/components/ui';
 import { useApp } from '../src/context/AppContext';
-import { MAX_CONTENT_WIDTH, colors, fonts, radius, shadow } from '../src/theme';
+import { Colors, MAX_CONTENT_WIDTH, fonts, radius } from '../src/theme';
 
 type Slide = { icon: IconName; title: string; text: string; tint: string; bg: string; tag: string };
 
-const SLIDES: Slide[] = [
+const buildSlides = (colors: Colors): Slide[] => [
   {
     icon: 'file-text', tag: 'Upload', tint: colors.accent, bg: colors.accentLight,
     title: 'Turn any document into a quiz',
-    text: 'Upload a PDF of your notes, textbook chapter or lecture slides and get a practice assessment in seconds.',
+    text: 'Upload a PDF of your notes or textbook chapter and get a practice assessment in seconds.',
   },
   {
-    icon: 'zap', tag: 'AI powered', tint: colors.tagTrueFalseText, bg: colors.tagTrueFalseBg,
-    title: 'AI writes the questions',
-    text: 'Multiple-choice questions with instant feedback that explains every answer.',
+    icon: 'edit-3', tag: 'Create', tint: colors.tagTrueFalseText, bg: colors.tagTrueFalseBg,
+    title: 'Build your own quizzes',
+    text: 'Type questions one by one or import them from JSON. Keep them in editing mode, then publish when they are ready.',
+  },
+  {
+    icon: 'bell', tag: 'Remind', tint: colors.warning, bg: colors.warningLight,
+    title: 'Study on your schedule',
+    text: 'Pick a quiz and a time of day and get a reminder right when you planned to practise.',
   },
   {
     icon: 'activity', tag: 'Progress', tint: colors.tagInputText, bg: colors.tagInputBg,
@@ -29,6 +35,9 @@ const SLIDES: Slide[] = [
 ];
 
 export default function Onboarding() {
+  const { colors, isDark } = useTheme();
+  const s = useStyles(makeStyles);
+  const SLIDES = useMemo(() => buildSlides(colors), [colors]);
   const { width } = useWindowDimensions();
   const { completeOnboarding } = useApp();
   const listRef = useRef<FlatList<Slide>>(null);
@@ -47,7 +56,7 @@ export default function Onboarding() {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
-      <StatusBar style="dark" />
+      <StatusBar style={isDark ? 'light' : 'dark'} />
       <View style={s.top}>
         <Brand />
         {!last && <Button title="Skip" variant="link" onPress={finish} />}
@@ -88,7 +97,7 @@ export default function Onboarding() {
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   top: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, paddingTop: 16 },
   slide: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 },
   card: {

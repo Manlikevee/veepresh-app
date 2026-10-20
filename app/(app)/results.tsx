@@ -1,10 +1,11 @@
+import { Theme, useStyles, useTheme } from '../../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import { Redirect, router } from 'expo-router';
 import React from 'react';
 import { Alert, StyleSheet, Text, View } from 'react-native';
 import { Button, FadeUp, Page } from '../../src/components/ui';
 import { useApp } from '../../src/context/AppContext';
-import { PASS_THRESHOLD, colors, fonts, radius, shadowLg } from '../../src/theme';
+import { PASS_THRESHOLD, fonts, radius } from '../../src/theme';
 
 // Recreates the 45deg repeating-linear-gradient stripe overlay from .results-header::before
 function Stripes() {
@@ -20,6 +21,8 @@ function Stripes() {
 }
 
 export default function Results() {
+  const { colors } = useTheme();
+  const s = useStyles(makeStyles);
   const { lastResult: r } = useApp();
   if (!r) return <Redirect href="/(app)" />;
 
@@ -85,7 +88,7 @@ export default function Results() {
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   card: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, overflow: 'hidden', ...shadowLg },
   header: { paddingVertical: 36, paddingHorizontal: 32, alignItems: 'center', overflow: 'hidden' },
   icon: { width: 64, height: 64, borderRadius: 32, backgroundColor: 'rgba(255,255,255,0.15)', alignItems: 'center', justifyContent: 'center', marginBottom: 16 },

@@ -8,6 +8,8 @@ export const SAMPLE_SET: QuestionSet = {
   description:
     'Test your understanding of industrial chemistry, including raw materials, industrial processes, chemical manufacturing, separation techniques, fertilizers, cement, glass, polymers, petroleum refining, reactors, quality control, environmental management, industrial safety, and large-scale chemical production.',
   questions: SAMPLE_QUESTIONS,
+  status: 'published',
+  origin: 'sample',
   isSample: true,
   createdAt: 0,
 };

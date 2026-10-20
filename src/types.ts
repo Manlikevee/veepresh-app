@@ -7,15 +7,21 @@ export type Question = {
   feedback: string;
 };
 
+export type SetStatus = 'draft' | 'published';
+export type SetOrigin = 'sample' | 'ai' | 'custom' | 'json';
+
 export type QuestionSet = {
   id: string;
   category: string;
   title: string;
   description: string;
   questions: Question[];
+  status: SetStatus; // draft = "editing" mode (not takeable), published = visible & takeable
+  origin: SetOrigin;
   isSample?: boolean;
   sourceFile?: string;
   createdAt: number;
+  updatedAt?: number;
 };
 
 export type PickedDoc = {
@@ -39,6 +45,20 @@ export type QuizResult = {
   pct: number;
   passed: boolean;
   review: ReviewItem[];
+};
+
+export type Attempt = { id: string; setId: string; title: string; pct: number; passed: boolean; total: number; at: number };
+
+/** Weekdays use 1 = Sunday … 7 = Saturday (same as expo-notifications). Empty `days` = every day. */
+export type Reminder = {
+  id: string;
+  setId: string;
+  setTitle: string;
+  hour: number; // 0-23
+  minute: number;
+  days: number[];
+  enabled: boolean;
+  notificationIds: string[];
 };
 
 export type User = { name: string; email: string };

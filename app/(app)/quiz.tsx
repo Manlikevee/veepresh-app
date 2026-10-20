@@ -1,3 +1,4 @@
+import { Theme, useStyles, useTheme } from '../../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
@@ -5,26 +6,28 @@ import { Alert, BackHandler, Pressable, StyleSheet, Text, View } from 'react-nat
 import { Button, FadeUp, MetaCard, Page, ProgressBar } from '../../src/components/ui';
 import { useApp } from '../../src/context/AppContext';
 import { buildQuiz, estimateMinutes, pad } from '../../src/lib/quiz';
-import { PASS_THRESHOLD, SECONDS_PER_QUESTION, colors, fonts, radius, shadow } from '../../src/theme';
+import { PASS_THRESHOLD, SECONDS_PER_QUESTION, fonts, radius } from '../../src/theme';
 import type { Question, QuestionSet, QuizResult } from '../../src/types';
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 
 export default function Quiz() {
   const { setId, count } = useLocalSearchParams<{ setId: string; count: string }>();
-  const { getSet, setLastResult } = useApp();
+  const { getSet, setLastResult, addAttempt } = useApp();
   const set = getSet(setId);
-  if (!set) return <Redirect href="/(app)" />;
+  if (!set || set.status !== 'published') return <Redirect href="/(app)" />;
   return (
     <QuizRunner
       set={set}
       count={Number(count) || 10}
-      onFinish={(r) => { setLastResult(r); router.replace('/(app)/results'); }}
+      onFinish={(r) => { setLastResult(r); addAttempt(r, set.title); router.replace('/(app)/results'); }}
     />
   );
 }
 
 function QuizRunner({ set, count, onFinish }: { set: QuestionSet; count: number; onFinish: (r: QuizResult) => void }) {
+  const { colors } = useTheme();
+  const s = useStyles(makeStyles);
   const [questions] = useState<Question[]>(() => buildQuiz(set.questions, count));
   const n = questions.length;
   const [current, setCurrent] = useState(0);
@@ -210,7 +213,7 @@ function QuizRunner({ set, count, onFinish }: { set: QuestionSet; count: number;
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   progressRow: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 },
   progressLabel: { fontFamily: fonts.bodyMedium, fontSize: 12.5, color: colors.textSecondary },
   fraction: { fontFamily: fonts.body, fontSize: 12.5, color: colors.textSecondary },

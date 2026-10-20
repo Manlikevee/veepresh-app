@@ -44,6 +44,9 @@ export async function generateQuestionSet({ doc, title, onStage }: GenerateOptio
     description: `Questions generated from "${doc.name}". Test your understanding of the key ideas in this document.`,
     sourceFile: doc.name,
     createdAt: Date.now(),
+    updatedAt: Date.now(),
+    status: 'published',
+    origin: 'ai',
     questions: SAMPLE_QUESTIONS.map((q) => ({ ...q, id: `${id}_${q.id}` })),
   };
 }

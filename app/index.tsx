@@ -1,11 +1,13 @@
+import { Theme, useStyles, useTheme } from '../src/context/ThemeContext';
 import { Redirect } from 'expo-router';
 import React from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useApp } from '../src/context/AppContext';
-import { colors } from '../src/theme';
+
 
 // Entry gate: onboarding -> login -> home
 export default function Index() {
+  const { colors } = useTheme();
   const { ready, onboarded, user } = useApp();
   if (!ready) {
     return (

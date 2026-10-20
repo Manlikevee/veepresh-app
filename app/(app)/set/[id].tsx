@@ -1,3 +1,4 @@
+import { Theme, useStyles, useTheme } from '../../../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import { Redirect, router, useLocalSearchParams } from 'expo-router';
 import React, { useState } from 'react';
@@ -5,9 +6,11 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { BackRow, Button, Card, FadeUp, MetaCard, Page } from '../../../src/components/ui';
 import { useApp } from '../../../src/context/AppContext';
 import { estimateMinutes } from '../../../src/lib/quiz';
-import { MIN_QUESTIONS, PASS_THRESHOLD, colors, fonts, radius } from '../../../src/theme';
+import { MIN_QUESTIONS, PASS_THRESHOLD, fonts, radius } from '../../../src/theme';
 
 export default function SetDetail() {
+  const { colors } = useTheme();
+  const s = useStyles(makeStyles);
   const { id } = useLocalSearchParams<{ id: string }>();
   const { getSet } = useApp();
   const set = getSet(id);
@@ -16,6 +19,22 @@ export default function SetDetail() {
 
   if (!set) return <Redirect href="/(app)" />;
 
+  if (set.status !== 'published') {
+    return (
+      <Page>
+        <BackRow onBack={() => router.back()} />
+        <Card style={{ alignItems: 'center', paddingVertical: 30 }}>
+          <Feather name="edit-3" size={26} color={colors.warning} />
+          <Text style={{ fontFamily: fonts.display700, fontSize: 19, letterSpacing: -0.3, color: colors.textPrimary, marginTop: 14 }}>This quiz is in editing mode</Text>
+          <Text style={{ fontFamily: fonts.body, fontSize: 14.5, lineHeight: 23, color: colors.textSecondary, textAlign: 'center', marginTop: 6 }}>
+            Publish it from the editor to take the quiz.
+          </Text>
+          <Button title="Open editor" icon="edit-3" onPress={() => router.replace({ pathname: '/(app)/editor/[id]', params: { id: set.id } })} style={{ marginTop: 18 }} />
+        </Card>
+      </Page>
+    );
+  }
+
   const min = Math.min(MIN_QUESTIONS, max);
   const clamp = (n: number) => Math.min(Math.max(n, min), max);
   const points = set.questions.slice(0, count).reduce((sum, q) => sum + q.points, 0);
@@ -23,7 +42,14 @@ export default function SetDetail() {
 
   return (
     <Page>
-      <BackRow onBack={() => router.back()} />
+      <BackRow
+        onBack={() => router.back()}
+        right={
+          !set.isSample ? (
+            <Button title="Edit" variant="secondary" icon="edit-3" onPress={() => router.push({ pathname: '/(app)/editor/[id]', params: { id: set.id } })} style={{ paddingVertical: 8, paddingHorizontal: 14 }} />
+          ) : undefined
+        }
+      />
 
       <FadeUp>
         <MetaCard
@@ -76,7 +102,7 @@ export default function SetDetail() {
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   cardHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', paddingVertical: 16, paddingHorizontal: 22, borderBottomWidth: 1, borderBottomColor: colors.border, backgroundColor: colors.surface2 },
   cardHeaderText: { fontFamily: fonts.display700, fontSize: 12, letterSpacing: 1, textTransform: 'uppercase', color: colors.textMuted },
   tag: { backgroundColor: colors.accentLight, paddingHorizontal: 10, paddingVertical: 3, borderRadius: radius.pill },

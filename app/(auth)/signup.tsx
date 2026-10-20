@@ -1,12 +1,14 @@
+import { Theme, useStyles, useTheme } from '../../src/context/ThemeContext';
 import { Link, router } from 'expo-router';
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, Text, View } from 'react-native';
-import { Brand, Button, Card, FadeUp, Field, Page, text } from '../../src/components/ui';
+import { Brand, Button, Card, FadeUp, Field, Page, useText } from '../../src/components/ui';
 import { useApp } from '../../src/context/AppContext';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export default function Signup() {
+  const t = useText();
   const { signUp } = useApp();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -35,8 +37,8 @@ export default function Signup() {
           <Brand />
         </FadeUp>
         <FadeUp delay={100}>
-          <Text style={text.h1}>Create your account</Text>
-          <Text style={[text.lead, { marginTop: 8, marginBottom: 24 }]}>Start turning your documents into quizzes.</Text>
+          <Text style={t.h1}>Create your account</Text>
+          <Text style={[t.lead, { marginTop: 8, marginBottom: 24 }]}>Start turning your documents into quizzes.</Text>
         </FadeUp>
         <FadeUp delay={150}>
           <Card style={{ padding: 24 }}>
@@ -48,8 +50,8 @@ export default function Signup() {
             <Button title="Sign up" size="lg" onPress={submit} loading={loading} style={{ marginTop: 4 }} />
           </Card>
           <View style={{ flexDirection: 'row', justifyContent: 'center', marginTop: 22 }}>
-            <Text style={text.muted}>Already have an account? </Text>
-            <Link href="/(auth)/login" style={text.link}>Log in</Link>
+            <Text style={t.muted}>Already have an account? </Text>
+            <Link href="/(auth)/login" style={t.link}>Log in</Link>
           </View>
         </FadeUp>
       </Page>

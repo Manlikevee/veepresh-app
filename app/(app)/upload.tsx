@@ -1,18 +1,22 @@
+import { Theme, useStyles, useTheme } from '../../src/context/ThemeContext';
 import { Feather } from '@expo/vector-icons';
 import * as DocumentPicker from 'expo-document-picker';
 import { router } from 'expo-router';
 import React, { useState } from 'react';
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, View } from 'react-native';
-import { BackRow, Button, Card, FadeUp, Field, Page, ProgressBar, text } from '../../src/components/ui';
+import { BackRow, Button, Card, FadeUp, Field, Page, ProgressBar, useText } from '../../src/components/ui';
 import { useApp } from '../../src/context/AppContext';
 import { formatBytes } from '../../src/lib/quiz';
 import { GENERATION_STAGES, generateQuestionSet } from '../../src/services/ai';
-import { colors, fonts, radius } from '../../src/theme';
+import { fonts, radius } from '../../src/theme';
 import type { PickedDoc } from '../../src/types';
 
 const MAX_BYTES = 25 * 1024 * 1024;
 
 export default function Upload() {
+  const { colors } = useTheme();
+  const s = useStyles(makeStyles);
+  const t = useText();
   const { addSet } = useApp();
   const [doc, setDoc] = useState<PickedDoc | null>(null);
   const [title, setTitle] = useState('');
@@ -56,8 +60,8 @@ export default function Upload() {
       <Page>
         <BackRow onBack={() => router.back()} />
         <FadeUp>
-          <Text style={text.h1}>Generate questions</Text>
-          <Text style={[text.lead, { marginTop: 8, marginBottom: 24 }]}>Upload a PDF and we'll turn it into an assessment.</Text>
+          <Text style={t.h1}>Generate questions</Text>
+          <Text style={[t.lead, { marginTop: 8, marginBottom: 24 }]}>Upload a PDF and we'll turn it into an assessment.</Text>
         </FadeUp>
 
         <FadeUp delay={100}>
@@ -113,7 +117,7 @@ export default function Upload() {
   );
 }
 
-const s = StyleSheet.create({
+const makeStyles = ({ colors, shadow, shadowLg }: Theme) => StyleSheet.create({
   drop: { alignItems: 'center', paddingVertical: 32, borderStyle: 'dashed', borderWidth: 1.5 },
   dropIcon: { width: 56, height: 56, borderRadius: radius.md, backgroundColor: colors.accentLight, alignItems: 'center', justifyContent: 'center' },
   dropTitle: { fontFamily: fonts.display700, fontSize: 19, letterSpacing: -0.3, color: colors.textPrimary, marginTop: 16 },
