@@ -21,7 +21,7 @@ export function Page({
     <SafeAreaView edges={edges} style={{ flex: 1, backgroundColor: colors.bg }}>
       <StatusBar style={isDark ? 'light' : 'dark'} />
       {scroll ? (
-        <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{ padding: 16, paddingBottom: 48, alignItems: 'center' }}>
+        <ScrollView showsHorizontalScrollIndicator={false} showsVerticalScrollIndicator={false}  keyboardShouldPersistTaps="handled" contentContainerStyle={{ padding: 16, paddingBottom: 48, alignItems: 'center' }}>
           <View style={[{ width: '100%', maxWidth: MAX_CONTENT_WIDTH }, contentStyle]}>{children}</View>
         </ScrollView>
       ) : (
