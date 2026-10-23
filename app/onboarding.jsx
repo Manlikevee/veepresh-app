@@ -1,0 +1,124 @@
+import { useStyles, useTheme } from '../src/context/ThemeContext';
+import { Feather } from '@expo/vector-icons';
+import { router } from 'expo-router';
+import React, { useMemo, useRef, useState } from 'react';
+import { FlatList, StyleSheet, Text, useWindowDimensions, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
+import { Brand, Button, FadeUp } from '../src/components/ui';
+import { useApp } from '../src/context/AppContext';
+import { MAX_CONTENT_WIDTH, fonts, radius } from '../src/theme';
+
+const buildSlides = (colors) => [
+  {
+    icon: 'file-text', tag: 'Upload', tint: colors.accent, bg: colors.accentLight,
+    title: 'Turn any document into a quiz',
+    text: 'Upload a PDF of your notes or textbook and get a practice quiz in seconds, or a collection with one section per chapter.',
+  },
+  {
+    icon: 'layers', tag: 'Collections', tint: colors.accent, bg: colors.accentLight,
+    title: 'Learn one chapter at a time',
+    text: 'Collections unlock section by section as you pass them, so you never see questions about parts you have not studied yet.',
+  },
+  {
+    icon: 'edit-3', tag: 'Create', tint: colors.tagTrueFalseText, bg: colors.tagTrueFalseBg,
+    title: 'Build your own quizzes',
+    text: 'Type questions one by one or import them from JSON. Keep them in editing mode, then publish when they are ready.',
+  },
+  {
+    icon: 'compass', tag: 'Marketplace', tint: colors.success, bg: colors.successLight,
+    title: 'Share and discover',
+    text: 'Make your quizzes public to share them, or search the marketplace and add quizzes made by others to your library.',
+  },
+  {
+    icon: 'bell', tag: 'Remind', tint: colors.warning, bg: colors.warningLight,
+    title: 'Study on your schedule',
+    text: 'Pick a quiz and a time of day and get a reminder right when you planned to practise.',
+  },
+  {
+    icon: 'activity', tag: 'Progress', tint: colors.tagInputText, bg: colors.tagInputBg,
+    title: 'Practise and track progress',
+    text: 'Timed assessments, a 70% pass mark and a full answer review so you know exactly what to revise.',
+  },
+];
+
+export default function Onboarding() {
+  const { colors, isDark } = useTheme();
+  const s = useStyles(makeStyles);
+  const SLIDES = useMemo(() => buildSlides(colors), [colors]);
+  const { width } = useWindowDimensions();
+  const { completeOnboarding } = useApp();
+  const listRef = useRef(null);
+  const [index, setIndex] = useState(0);
+  const last = index === SLIDES.length - 1;
+
+  const finish = async () => {
+    await completeOnboarding();
+    router.replace('/(auth)/signup');
+  };
+
+  const onScrollEnd = (e) =>
+    setIndex(Math.round(e.nativeEvent.contentOffset.x / width));
+
+  const next = () => (last ? finish() : listRef.current?.scrollToIndex({ index: index + 1, animated: true }));
+
+  return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
+      <StatusBar style={isDark ? 'light' : 'dark'} />
+      <View style={s.top}>
+        <Brand />
+        {!last && <Button title="Skip" variant="link" onPress={finish} />}
+      </View>
+
+      <FlatList
+        ref={listRef}
+        data={SLIDES}
+        horizontal
+        pagingEnabled
+        bounces={false}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(i) => i.title}
+        onMomentumScrollEnd={onScrollEnd}
+        renderItem={({ item }) => (
+          <View style={[s.slide, { width }]}>
+            <FadeUp style={s.card}>
+              <View style={[s.iconTile, { backgroundColor: item.bg }]}>
+                <Feather name={item.icon} size={56} color={item.tint} />
+              </View>
+              <View style={[s.tag, { backgroundColor: item.bg }]}>
+                <Text style={[s.tagText, { color: item.tint }]}>{item.tag}</Text>
+              </View>
+              <Text style={s.title}>{item.title}</Text>
+              <Text style={s.text}>{item.text}</Text>
+            </FadeUp>
+          </View>
+        )}
+      />
+
+      <View style={s.footer}>
+        <View style={s.dots}>
+          {SLIDES.map((_, i) => <View key={i} style={[s.dot, i === index && s.dotActive]} />)}
+        </View>
+        <Button title={last ? 'Get started' : 'Next'} iconRight="chevron-right" size="lg" onPress={next} />
+      </View>
+    </SafeAreaView>
+  );
+}
+
+const makeStyles = ({ colors, shadow, shadowLg }) => StyleSheet.create({
+  top: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', paddingHorizontal: 20, paddingTop: 16 },
+  slide: { alignItems: 'center', justifyContent: 'center', paddingHorizontal: 16 },
+  card: {
+    width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignItems: 'center', backgroundColor: colors.surface,
+    borderWidth: 1, borderColor: colors.border, borderRadius: radius.md, paddingVertical: 40, paddingHorizontal: 24, ...shadow,
+  },
+  iconTile: { width: 132, height: 132, borderRadius: radius.md, alignItems: 'center', justifyContent: 'center', marginBottom: 28 },
+  tag: { paddingHorizontal: 10, paddingVertical: 3, borderRadius: radius.pill, marginBottom: 14 },
+  tagText: { fontFamily: fonts.bodyMedium, fontSize: 11, letterSpacing: 0.5, textTransform: 'uppercase' },
+  title: { fontFamily: fonts.display700, fontSize: 26, lineHeight: 31, letterSpacing: -0.5, color: colors.textPrimary, textAlign: 'center', marginBottom: 12 },
+  text: { fontFamily: fonts.body, fontSize: 14.5, lineHeight: 23, color: colors.textSecondary, textAlign: 'center' },
+  footer: { paddingHorizontal: 16, paddingBottom: 20, paddingTop: 8, gap: 20, width: '100%', maxWidth: MAX_CONTENT_WIDTH, alignSelf: 'center' },
+  dots: { flexDirection: 'row', justifyContent: 'center', gap: 8 },
+  dot: { width: 6, height: 6, borderRadius: 99, backgroundColor: colors.border },
+  dotActive: { width: 24, backgroundColor: colors.accent },
+});

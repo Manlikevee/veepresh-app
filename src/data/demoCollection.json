@@ -1,0 +1,278 @@
+{
+  "type": "collection",
+  "title": "Introduction to Python",
+  "category": "Programming",
+  "description": "A chapter-by-chapter course quiz. Finish each chapter to unlock the next one.",
+  "sections": [
+    {
+      "title": "Chapter 1 · Getting started",
+      "description": "What Python is, how to run it and how to write your first program.",
+      "questions": [
+        {
+          "text": "Who created the Python programming language?",
+          "options": [
+            "Guido van Rossum",
+            "James Gosling",
+            "Bjarne Stroustrup",
+            "Dennis Ritchie"
+          ],
+          "correct": 0,
+          "points": 5,
+          "feedback": "Guido van Rossum started Python in the late 1980s and released it in 1991."
+        },
+        {
+          "text": "Which function displays text on the screen?",
+          "options": [
+            "echo()",
+            "print()",
+            "console.log()",
+            "write()"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "print() sends output to the console in Python."
+        },
+        {
+          "text": "How is Python usually described?",
+          "options": [
+            "A high-level, interpreted language",
+            "A low-level assembly language",
+            "A markup language",
+            "A database query language"
+          ],
+          "correct": 0,
+          "points": 5,
+          "feedback": "Python is high-level and its code is run by an interpreter."
+        },
+        {
+          "text": "Which symbol starts a single-line comment in Python?",
+          "options": [
+            "//",
+            "#",
+            "--",
+            "/*"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Everything after # on a line is ignored by Python."
+        }
+      ]
+    },
+    {
+      "title": "Chapter 2 · Variables and data types",
+      "description": "Storing values and working with numbers, text and booleans.",
+      "questions": [
+        {
+          "text": "Which of these is a valid variable name?",
+          "options": [
+            "2count",
+            "my-var",
+            "total_score",
+            "class"
+          ],
+          "correct": 2,
+          "points": 5,
+          "feedback": "Names can't start with a digit, contain hyphens or be reserved keywords such as class."
+        },
+        {
+          "text": "What does type(3.14) return?",
+          "options": [
+            "<class 'int'>",
+            "<class 'float'>",
+            "<class 'str'>",
+            "<class 'decimal'>"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Numbers with a decimal point are floats."
+        },
+        {
+          "text": "What is the result of \"Py\" + \"thon\"?",
+          "options": [
+            "Py thon",
+            "Python",
+            "An error",
+            "Py+thon"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "The + operator joins (concatenates) strings."
+        },
+        {
+          "text": "Which of these is a Boolean value in Python?",
+          "options": [
+            "true",
+            "TRUE",
+            "True",
+            "'True'"
+          ],
+          "correct": 2,
+          "points": 5,
+          "feedback": "Python's Boolean values are True and False, with a capital first letter."
+        }
+      ]
+    },
+    {
+      "title": "Chapter 3 · Control flow",
+      "description": "Making decisions and repeating actions with if statements and loops.",
+      "questions": [
+        {
+          "text": "Which keyword means \"else if\" in Python?",
+          "options": [
+            "else if",
+            "elif",
+            "elseif",
+            "otherwise"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "elif chains extra conditions after an if."
+        },
+        {
+          "text": "How many times does `for i in range(3):` run its body?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "Forever"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "range(3) produces 0, 1 and 2, so the body runs three times."
+        },
+        {
+          "text": "Which keyword leaves a loop immediately?",
+          "options": [
+            "stop",
+            "exit",
+            "break",
+            "continue"
+          ],
+          "correct": 2,
+          "points": 5,
+          "feedback": "break ends the loop; continue only skips to the next iteration."
+        },
+        {
+          "text": "What does Python use to mark a block of code?",
+          "options": [
+            "Curly braces",
+            "Indentation",
+            "Semicolons",
+            "Parentheses"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Consistent indentation defines blocks in Python."
+        }
+      ]
+    },
+    {
+      "title": "Chapter 4 · Functions",
+      "description": "Writing reusable blocks of code with parameters and return values.",
+      "questions": [
+        {
+          "text": "Which keyword defines a function?",
+          "options": [
+            "function",
+            "def",
+            "fun",
+            "define"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Functions start with def followed by a name and parentheses."
+        },
+        {
+          "text": "What does the return statement do?",
+          "options": [
+            "Prints a value",
+            "Ends the function and sends a value back",
+            "Restarts the function",
+            "Deletes the function"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "return stops the function and hands a result to the caller."
+        },
+        {
+          "text": "What does this print?\n\ndef add(a, b=2):\n    return a + b\n\nprint(add(3))",
+          "options": [
+            "3",
+            "5",
+            "An error",
+            "2"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "b defaults to 2, so add(3) returns 3 + 2 = 5."
+        },
+        {
+          "text": "A variable created inside a function is called…",
+          "options": [
+            "Global",
+            "Local",
+            "Static",
+            "Constant"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Local variables only exist while the function runs."
+        }
+      ]
+    },
+    {
+      "title": "Chapter 5 · Lists and dictionaries",
+      "description": "Working with collections of data.",
+      "questions": [
+        {
+          "text": "Which index returns the first item of a list?",
+          "options": [
+            "0",
+            "1",
+            "-0",
+            "first"
+          ],
+          "correct": 0,
+          "points": 5,
+          "feedback": "Python lists are zero-indexed."
+        },
+        {
+          "text": "Which method adds an item to the end of a list?",
+          "options": [
+            "add()",
+            "append()",
+            "push()",
+            "insert_end()"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "my_list.append(x) adds x at the end."
+        },
+        {
+          "text": "What does a dictionary store?",
+          "options": [
+            "Ordered numbers only",
+            "Key-value pairs",
+            "Only strings",
+            "Functions only"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "Dictionaries map unique keys to values."
+        },
+        {
+          "text": "What does len([1, 2, 3, 4]) return?",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "[4]"
+          ],
+          "correct": 1,
+          "points": 5,
+          "feedback": "len() counts the items in the list."
+        }
+      ]
+    }
+  ]
+}

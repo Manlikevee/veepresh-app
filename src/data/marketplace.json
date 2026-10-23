@@ -1,0 +1,746 @@
+[
+  {
+    "id": "mk_html_css",
+    "author": "Amara Okafor",
+    "downloads": 1842,
+    "publishedAt": "2026-09-14",
+    "type": "collection",
+    "title": "HTML & CSS Foundations",
+    "category": "Web development",
+    "description": "Build a solid base for web pages: structure with HTML, style with CSS, then lay it out with Flexbox.",
+    "sections": [
+      {
+        "title": "HTML structure",
+        "description": "Tags, elements and the skeleton of a web page.",
+        "questions": [
+          {
+            "text": "Which tag holds the visible content of a web page?",
+            "options": [
+              "<head>",
+              "<body>",
+              "<html>",
+              "<title>"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "<body> contains everything the user sees."
+          },
+          {
+            "text": "Which tag creates a hyperlink?",
+            "options": [
+              "<link>",
+              "<a>",
+              "<href>",
+              "<url>"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "The anchor tag <a> with an href attribute makes links."
+          },
+          {
+            "text": "Which tag defines the largest heading?",
+            "options": [
+              "<h6>",
+              "<heading>",
+              "<h1>",
+              "<head>"
+            ],
+            "correct": 2,
+            "points": 5,
+            "feedback": "<h1> is the top-level heading; <h6> is the smallest."
+          },
+          {
+            "text": "What does HTML stand for?",
+            "options": [
+              "Hyper Trainer Marking Language",
+              "HyperText Markup Language",
+              "High Text Machine Language",
+              "HyperTool Multi Language"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "HTML is HyperText Markup Language."
+          }
+        ]
+      },
+      {
+        "title": "CSS basics",
+        "description": "Selectors, properties and styling text and colour.",
+        "questions": [
+          {
+            "text": "Which property changes the colour of text?",
+            "options": [
+              "text-color",
+              "font-color",
+              "color",
+              "fgcolor"
+            ],
+            "correct": 2,
+            "points": 5,
+            "feedback": "color sets the foreground (text) colour."
+          },
+          {
+            "text": "Which selector targets elements with class \"card\"?",
+            "options": [
+              "#card",
+              ".card",
+              "card",
+              "*card"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "A dot selects classes; a hash selects ids."
+          },
+          {
+            "text": "Where should you link an external stylesheet?",
+            "options": [
+              "In the <head> with a <link> tag",
+              "Inside <body> with <style>",
+              "After </html>",
+              "In the <footer>"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "<link rel=\"stylesheet\" href=\"…\"> belongs in the document head."
+          },
+          {
+            "text": "Which property adds space outside an element's border?",
+            "options": [
+              "padding",
+              "margin",
+              "border-spacing",
+              "outline"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "margin is outside the border; padding is inside."
+          }
+        ]
+      },
+      {
+        "title": "Layout with Flexbox",
+        "description": "Arranging items in rows and columns.",
+        "questions": [
+          {
+            "text": "Which declaration turns an element into a flex container?",
+            "options": [
+              "display: flex",
+              "position: flex",
+              "flex: container",
+              "layout: flex"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "display: flex enables Flexbox on the parent."
+          },
+          {
+            "text": "Which property aligns flex items along the main axis?",
+            "options": [
+              "align-items",
+              "justify-content",
+              "flex-wrap",
+              "align-content"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "justify-content distributes items along the main axis."
+          },
+          {
+            "text": "What is the default value of flex-direction?",
+            "options": [
+              "column",
+              "row",
+              "row-reverse",
+              "column-reverse"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Flex items sit in a row by default."
+          },
+          {
+            "text": "Which property lets flex items wrap onto new lines?",
+            "options": [
+              "wrap-items",
+              "flex-wrap",
+              "overflow",
+              "flex-lines"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "flex-wrap: wrap allows items to move to the next line."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mk_finance_101",
+    "author": "Daniel Mensah",
+    "downloads": 967,
+    "publishedAt": "2026-08-30",
+    "type": "collection",
+    "title": "Personal Finance 101",
+    "category": "Finance",
+    "description": "From budgeting to credit: the money basics everyone should know, taught one step at a time.",
+    "sections": [
+      {
+        "title": "Budgeting basics",
+        "description": "Tracking income and expenses.",
+        "questions": [
+          {
+            "text": "In the 50/30/20 rule, what is the 20% for?",
+            "options": [
+              "Entertainment",
+              "Savings and debt repayment",
+              "Rent",
+              "Taxes"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "50% needs, 30% wants and 20% savings or paying down debt."
+          },
+          {
+            "text": "A budget compares which two things?",
+            "options": [
+              "Income and expenses",
+              "Assets and age",
+              "Tax and interest",
+              "Prices and discounts"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "A budget plans how income is spent."
+          },
+          {
+            "text": "Which is a fixed expense?",
+            "options": [
+              "Groceries",
+              "Monthly rent",
+              "Dining out",
+              "Fuel"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Fixed expenses stay the same each month, like rent."
+          },
+          {
+            "text": "What is the first step in making a budget?",
+            "options": [
+              "Cancel all subscriptions",
+              "Work out your monthly income",
+              "Open a credit card",
+              "Buy a planner"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "You can only plan spending once you know what comes in."
+          }
+        ]
+      },
+      {
+        "title": "Saving and emergency funds",
+        "description": "Building a safety net and making money grow.",
+        "questions": [
+          {
+            "text": "How big is a typical emergency fund target?",
+            "options": [
+              "One week of spending",
+              "3–6 months of essential expenses",
+              "Five years of salary",
+              "One month of luxuries"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Many advisors suggest three to six months of essential costs."
+          },
+          {
+            "text": "Where should an emergency fund be kept?",
+            "options": [
+              "Somewhere easy to access",
+              "Locked in a 10-year bond",
+              "In risky shares",
+              "In cryptocurrency only"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "It should be safe and available quickly."
+          },
+          {
+            "text": "What does \"pay yourself first\" mean?",
+            "options": [
+              "Spend on treats before bills",
+              "Set savings aside as soon as you're paid",
+              "Pay the biggest bill last",
+              "Lend money to friends"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Saving before spending makes it automatic."
+          },
+          {
+            "text": "Interest earned on previously earned interest is called…",
+            "options": [
+              "Simple interest",
+              "Compound interest",
+              "APR",
+              "Inflation"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Compounding lets savings grow faster over time."
+          }
+        ]
+      },
+      {
+        "title": "Credit and debt",
+        "description": "Understanding credit scores and paying off what you owe.",
+        "questions": [
+          {
+            "text": "What do lenders use a credit score for?",
+            "options": [
+              "Estimating how likely you are to repay",
+              "Setting your salary",
+              "Choosing your bank",
+              "Calculating tax"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "It summarises your credit history."
+          },
+          {
+            "text": "Which habit usually lowers a credit score?",
+            "options": [
+              "Paying on time",
+              "Missing payments",
+              "Keeping balances low",
+              "Checking your own score"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "Late or missed payments hurt your score."
+          },
+          {
+            "text": "What does APR stand for?",
+            "options": [
+              "Annual Percentage Rate",
+              "Average Payment Record",
+              "Applied Price Range",
+              "Account Payment Rule"
+            ],
+            "correct": 0,
+            "points": 5,
+            "feedback": "APR is the yearly cost of borrowing."
+          },
+          {
+            "text": "Which method pays off the smallest balances first?",
+            "options": [
+              "Debt avalanche",
+              "Debt snowball",
+              "Debt consolidation",
+              "Debt settlement"
+            ],
+            "correct": 1,
+            "points": 5,
+            "feedback": "The snowball method builds momentum with quick wins."
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mk_world_capitals",
+    "author": "Quiz Club",
+    "downloads": 3120,
+    "publishedAt": "2026-07-21",
+    "type": "single",
+    "title": "World Capitals",
+    "category": "Geography",
+    "description": "Ten capital cities that trip people up. How many can you name?",
+    "questions": [
+      {
+        "text": "What is the capital of Australia?",
+        "options": [
+          "Sydney",
+          "Melbourne",
+          "Canberra",
+          "Perth"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Canberra was purpose-built as the capital."
+      },
+      {
+        "text": "What is the capital of Canada?",
+        "options": [
+          "Toronto",
+          "Ottawa",
+          "Vancouver",
+          "Montreal"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Ottawa sits on the border of Ontario and Quebec."
+      },
+      {
+        "text": "What is the capital of Brazil?",
+        "options": [
+          "Rio de Janeiro",
+          "São Paulo",
+          "Brasília",
+          "Salvador"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Brasília replaced Rio as capital in 1960."
+      },
+      {
+        "text": "What is the capital of Japan?",
+        "options": [
+          "Kyoto",
+          "Osaka",
+          "Tokyo",
+          "Nagoya"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Tokyo has been the capital since 1868."
+      },
+      {
+        "text": "What is the capital of Egypt?",
+        "options": [
+          "Alexandria",
+          "Cairo",
+          "Giza",
+          "Luxor"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Cairo is on the Nile."
+      },
+      {
+        "text": "What is the capital of Kenya?",
+        "options": [
+          "Mombasa",
+          "Kisumu",
+          "Nairobi",
+          "Nakuru"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Nairobi is Kenya's largest city and capital."
+      },
+      {
+        "text": "What is the capital of Turkey?",
+        "options": [
+          "Istanbul",
+          "Ankara",
+          "Izmir",
+          "Bursa"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Ankara, not Istanbul, is Turkey's capital."
+      },
+      {
+        "text": "What is the capital of Nigeria?",
+        "options": [
+          "Lagos",
+          "Kano",
+          "Abuja",
+          "Ibadan"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Abuja became the capital in 1991."
+      },
+      {
+        "text": "What is the capital of Argentina?",
+        "options": [
+          "Córdoba",
+          "Buenos Aires",
+          "Rosario",
+          "Mendoza"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Buenos Aires lies on the Río de la Plata."
+      },
+      {
+        "text": "What is the capital of Switzerland?",
+        "options": [
+          "Zurich",
+          "Geneva",
+          "Bern",
+          "Basel"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Bern is Switzerland's federal city."
+      }
+    ]
+  },
+  {
+    "id": "mk_science_mix",
+    "author": "Priya Nair",
+    "downloads": 2204,
+    "publishedAt": "2026-08-05",
+    "type": "single",
+    "title": "General Science Mix",
+    "category": "Science",
+    "description": "A quick mixed round of biology, chemistry and physics essentials.",
+    "questions": [
+      {
+        "text": "What is the chemical symbol for gold?",
+        "options": [
+          "Ag",
+          "Au",
+          "Gd",
+          "Go"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Au comes from the Latin word aurum."
+      },
+      {
+        "text": "Which planet is closest to the Sun?",
+        "options": [
+          "Venus",
+          "Earth",
+          "Mercury",
+          "Mars"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Mercury orbits closest to the Sun."
+      },
+      {
+        "text": "Which gas do plants absorb for photosynthesis?",
+        "options": [
+          "Oxygen",
+          "Nitrogen",
+          "Carbon dioxide",
+          "Hydrogen"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Plants take in CO₂ and release oxygen."
+      },
+      {
+        "text": "What is the hardest natural substance?",
+        "options": [
+          "Gold",
+          "Iron",
+          "Quartz",
+          "Diamond"
+        ],
+        "correct": 3,
+        "points": 5,
+        "feedback": "Diamond tops the Mohs hardness scale."
+      },
+      {
+        "text": "Which organelle is the \"powerhouse\" of the cell?",
+        "options": [
+          "Nucleus",
+          "Mitochondrion",
+          "Ribosome",
+          "Golgi body"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Mitochondria produce most of the cell's ATP."
+      },
+      {
+        "text": "Roughly how fast does light travel?",
+        "options": [
+          "300 km/s",
+          "3,000 km/s",
+          "300,000 km/s",
+          "3,000,000 km/s"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Light travels about 300,000 kilometres per second."
+      },
+      {
+        "text": "Which force pulls objects towards the Earth?",
+        "options": [
+          "Magnetism",
+          "Gravity",
+          "Friction",
+          "Tension"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Gravity attracts masses towards each other."
+      },
+      {
+        "text": "How many bones does an adult human have?",
+        "options": [
+          "106",
+          "206",
+          "306",
+          "406"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "An adult skeleton has 206 bones."
+      },
+      {
+        "text": "At sea level, water boils at…",
+        "options": [
+          "50 °C",
+          "90 °C",
+          "100 °C",
+          "120 °C"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Water boils at 100 °C (212 °F) at standard pressure."
+      },
+      {
+        "text": "Which blood cells carry oxygen?",
+        "options": [
+          "White blood cells",
+          "Platelets",
+          "Red blood cells",
+          "Plasma cells"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Haemoglobin in red blood cells binds oxygen."
+      }
+    ]
+  },
+  {
+    "id": "mk_grammar",
+    "author": "Lena Fischer",
+    "downloads": 1530,
+    "publishedAt": "2026-09-02",
+    "type": "single",
+    "title": "English Grammar Essentials",
+    "category": "English",
+    "description": "Spelling, tenses, punctuation and word choice in ten quick questions.",
+    "questions": [
+      {
+        "text": "Which sentence is correct?",
+        "options": [
+          "Their going to the park.",
+          "There going to the park.",
+          "They're going to the park.",
+          "Theyre going to the park."
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "They're is short for \"they are\"."
+      },
+      {
+        "text": "What is the plural of \"child\"?",
+        "options": [
+          "Childs",
+          "Childen",
+          "Children",
+          "Childrens"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Child has an irregular plural: children."
+      },
+      {
+        "text": "What is the past tense of \"go\"?",
+        "options": [
+          "Goed",
+          "Went",
+          "Gone",
+          "Going"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Went is the simple past; gone is the past participle."
+      },
+      {
+        "text": "Which word is a noun?",
+        "options": [
+          "Quickly",
+          "Beautiful",
+          "Happiness",
+          "Run"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Happiness names a feeling, so it is a noun."
+      },
+      {
+        "text": "Which sentence is correct?",
+        "options": [
+          "She don't like tea.",
+          "She doesn't like tea.",
+          "She not like tea.",
+          "She didn't likes tea."
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "With she/he/it we use doesn't."
+      },
+      {
+        "text": "Which punctuation mark ends a question?",
+        "options": [
+          "Full stop",
+          "Comma",
+          "Question mark",
+          "Colon"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Direct questions end with a question mark."
+      },
+      {
+        "text": "Which word means the same as \"happy\"?",
+        "options": [
+          "Gloomy",
+          "Joyful",
+          "Angry",
+          "Tired"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Joyful is a synonym of happy."
+      },
+      {
+        "text": "Which shows possession correctly?",
+        "options": [
+          "Sarahs book",
+          "Sarah's book",
+          "Sarahs' book",
+          "Sarah book's"
+        ],
+        "correct": 1,
+        "points": 5,
+        "feedback": "Add 's to show that the book belongs to Sarah."
+      },
+      {
+        "text": "What is the opposite of \"ancient\"?",
+        "options": [
+          "Old",
+          "Historic",
+          "Modern",
+          "Classic"
+        ],
+        "correct": 2,
+        "points": 5,
+        "feedback": "Modern is the antonym of ancient."
+      },
+      {
+        "text": "An adjective describes…",
+        "options": [
+          "A noun",
+          "A verb",
+          "A sentence",
+          "A comma"
+        ],
+        "correct": 0,
+        "points": 5,
+        "feedback": "Adjectives modify nouns, e.g. a red car."
+      }
+    ]
+  }
+]

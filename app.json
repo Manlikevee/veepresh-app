@@ -4,14 +4,51 @@
     "slug": "veepresh",
     "version": "1.0.0",
     "scheme": "veepresh",
-    "platforms": ["ios", "android"],
+    "platforms": [
+      "ios",
+      "android"
+    ],
     "orientation": "portrait",
     "userInterfaceStyle": "automatic",
-    "ios": { "supportsTablet": true, "bundleIdentifier": "com.veepresh.app" },
-    "android": { "package": "com.veepresh.app" },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.veepresh.app"
+    },
+    "android": {
+      "package": "com.veepresh.app",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "backgroundColor": "#1D6BF3"
+      }
+    },
     "plugins": [
       "expo-router",
-      ["expo-notifications", { "color": "#1D6BF3" }]
-    ]
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 160,
+          "backgroundColor": "#F2F0EB",
+          "dark": {
+            "image": "./assets/images/splash-icon.png",
+            "backgroundColor": "#121110"
+          }
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "color": "#1D6BF3",
+          "icon": "./assets/images/notification-icon.png"
+        }
+      ]
+    ],
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "08be5916-19a8-4e66-b26f-2f5011c46aa3"
+      }
+    },
+    "icon": "./assets/images/icon.png"
   }
 }
